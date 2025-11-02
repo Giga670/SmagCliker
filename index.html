@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Jogo Clicker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="main" id="mainContent">
+    <h1>Smag Clicker!</h1>
+    <div class="score">
+      <strong>Pontos:</strong> <span id="score">0</span>
+      &nbsp;—&nbsp;
+      <strong>Pontos por clique:</strong> <span id="ppc">1</span>
+      <span id="autoSmall" style="margin-left:10px; font-size:13px; color:var(--muted);">Auto: <span id="autoSmallVal">0</span> pts/s</span>
+    </div>
+    <div class="info" id="message">Clique em qualquer lugar da tela para ganhar pontos (exceto nos botões).</div>
+  </div>
+
+  <div class="upgrades-panel" id="upgradesPanel" aria-label="Painel de Upgrades"></div>
+
+  <!-- Botão de configurações -->
+  <button class="settings-btn" id="settingsBtn" aria-label="Configurações">⚙️</button>
+
+  <!-- Modal de configurações -->
+  <div class="settings-modal-backdrop" id="settingsBackdrop" aria-hidden="true">
+    <div class="settings-modal" role="dialog" aria-modal="true" aria-label="Configurações do jogo">
+      <div class="settings-header">
+        <strong>Configurações</strong>
+        <button class="small-btn" id="closeSettings" type="button">Fechar</button>
+      </div>
+
+      <div class="settings-row">
+        <div><strong>Brilho</strong></div>
+        <div style="font-size:12px; color:var(--muted); margin-bottom:6px;">Ajusta a luminosidade da página</div>
+        <input type="range" id="brightnessRange" min="0.5" max="1.3" step="0.01" value="1">
+      </div>
+
+      <div class="settings-row">
+        <div><strong>Tema</strong></div>
+        <div style="font-size:12px; color:var(--muted); margin-bottom:6px;">Escolha entre os temas disponíveis</div>
+        <div class="theme-toggle"></div>
+      </div>
+
+      <div class="settings-row" style="text-align:right;">
+        <button class="small-btn" id="resetSettings" type="button">Resetar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

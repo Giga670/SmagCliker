@@ -1,0 +1,194 @@
+:root{
+  --bg1: #f6f9ff;
+  --bg2: #eef4ff;
+  --text: #052035;
+  --muted: #334;
+  --accent: #007BFF;
+  --accent-2: #29a3ff;
+  --brightness: 1;
+  --panel-bg: rgba(255,255,255,0.06);
+}
+html,body { height:100%; margin:0; }
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+}
+input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg,var(--bg1),var(--bg2));
+  cursor: pointer;
+  color: var(--text);
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:28px;
+  filter: brightness(var(--brightness));
+  transition: background 240ms, color 240ms, filter 160ms;
+}
+
+/* Tema escuro */
+body.theme-dark {
+  --bg1: #071021;
+  --bg2: #0b1630;
+  --text: #e7f2ff;
+  --muted: #bcd;
+  --accent: #2ea3ff;
+  --accent-2: #66c7ff;
+  --panel-bg: rgba(255,255,255,0.03);
+}
+
+.main {
+  width:100%;
+  max-width:960px;
+  padding:18px 18px 36px 18px;
+  border-radius:12px;
+  background: linear-gradient(180deg, var(--panel-bg), rgba(255,255,255,0.02));
+  backdrop-filter: blur(2px);
+}
+h1 { margin:0 0 12px 0; font-size:24px; }
+.score { font-size:18px; margin-bottom:12px; }
+.info { color: var(--muted); font-size:14px; }
+
+.upgrades-panel {
+  position: fixed;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: auto;
+}
+.upgrade {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text);
+}
+.upgrade .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+.upgrade .meta { color: var(--muted); font-size: 12px; }
+.upgrade .actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+}
+.upgrade .actions .left {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.price-ten { font-size: 13px; color: var(--text); margin-left: 6px; }
+button.buy {
+  padding: 6px 8px;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+}
+button.buy.secondary { background: var(--accent-2); }
+button.buy:active { transform: translateY(1px); }
+.upgrades-panel, .upgrades-panel * { cursor: default; }
+
+/* Botão de configurações flutuante */
+.settings-btn {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight:600;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  cursor: pointer;
+  z-index: 1200;
+}
+.settings-btn:active { transform: translateY(1px); }
+
+/* Modal de configurações */
+.settings-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1300;
+}
+.settings-modal {
+  width: 340px;
+  max-width: calc(100% - 40px);
+  background: linear-gradient(180deg, var(--panel-bg), rgba(255,255,255,0.02));
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  color: var(--text);
+}
+.settings-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.settings-row { margin:10px 0; font-size:14px; color:var(--muted); }
+input[type="range"] { width:100%; }
+
+/* ==== Botões da modal de Configurações ==== */
+.settings-modal .small-btn {
+  width: 100%;
+  box-sizing: border-box;
+}
+.theme-toggle {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.settings-row:last-child .small-btn {
+  width: auto;
+  align-self: flex-end;
+}
+
+/* Responsivo */
+@media (max-width:600px){
+  .upgrades-panel { right: 8px; width: 220px; padding: 8px; }
+  .settings-btn { right: 12px; bottom: 12px; width:48px; height:48px; }
+}
+
+/* Temas adicionais */
+    body.theme-matrix {
+      --bg1: #001006;
+      --bg2: #002014;
+      --text: #8cff8c;
+      --muted: #4fbf4f;
+      --accent: #00ff7f;
+      --accent-2: #66ff99;
+      --panel-bg: rgba(0,0,0,0.3);
+    }
